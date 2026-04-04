@@ -19,7 +19,7 @@ export function ShimmerButton({
   return (
     <button
       className={`group relative inline-flex items-center justify-center overflow-hidden rounded-lg px-6 py-3 font-mono text-sm font-semibold uppercase tracking-widest transition-all hover:scale-[1.02] active:scale-[0.98] ${className}`}
-      style={{ background, color: "#05070f" }}
+      style={{ background, color: "#000000" }}
       {...props}
     >
       <div

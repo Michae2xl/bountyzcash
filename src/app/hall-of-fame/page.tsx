@@ -6,6 +6,7 @@ import { SpotlightCard } from "@/components/ui/spotlight-card";
 import { HyperText } from "@/components/ui/hyper-text";
 import { SplitFlapDisplay } from "@/components/ui/split-flap-display";
 import { BorderBeam } from "@/components/ui/border-beam";
+import { MatrixRain } from "@/components/ui/matrix-rain";
 
 const TIMELINE_STEPS = [
   { date: "Mar 23", label: "Reported" },
@@ -36,6 +37,7 @@ export default function HallOfFame() {
             background: "var(--bg0)",
           }}
         >
+          <MatrixRain opacity={0.08} speed={50} />
           {/* Eyebrow */}
           <div
             style={{
