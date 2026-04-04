@@ -8,6 +8,7 @@ import { ShimmerButton } from "@/components/ui/shimmer-button";
 import { BorderBeam } from "@/components/ui/border-beam";
 import { HyperText } from "@/components/ui/hyper-text";
 import { SplitFlapDisplay } from "@/components/ui/split-flap-display";
+import { SubmitForm } from "@/components/submit-form";
 
 const ZCASH_SVG_PATH =
   "m270,540c0-148.9,121.1-270,270-270s270,121.1,270,270-121.1,270-270,270-270-121.1-270-270Zm366.31-125.3v41.09l-114.28,155h114.28v54.5h-73.67v45.16h-45.28v-45.16h-73.67v-41.09l114.16-155h-114.16v-54.5h73.67v-45.28h45.28v45.28h73.67Z";
@@ -997,107 +998,7 @@ export default function Home() {
               business days. AI-assisted discovery explicitly welcome.
             </p>
 
-            <div className="sbox">
-              <form
-                className="form"
-                onSubmit={(e) => e.preventDefault()}
-                noValidate
-              >
-                <div className="r2">
-                  <div className="fg">
-                    <label className="fl" htmlFor="fn">
-                      Name / Handle
-                    </label>
-                    <input
-                      className="fi"
-                      id="fn"
-                      type="text"
-                      placeholder="anon_hacker"
-                      autoComplete="off"
-                    />
-                  </div>
-                  <div className="fg">
-                    <label className="fl" htmlFor="fe">
-                      Contact Email
-                    </label>
-                    <input
-                      className="fi"
-                      id="fe"
-                      type="email"
-                      placeholder="you@proton.me"
-                    />
-                  </div>
-                </div>
-
-                <div className="r2">
-                  <div className="fg">
-                    <label className="fl" htmlFor="fsev">
-                      Severity (OWASP)
-                    </label>
-                    <select className="fsel" id="fsev" defaultValue="">
-                      <option value="">&mdash; Select &mdash;</option>
-                      <option>Critical (100&ndash;200 ZEC)</option>
-                      <option>High (20&ndash;100 ZEC)</option>
-                      <option>Medium (2&ndash;20 ZEC)</option>
-                      <option>Low (0&ndash;2 ZEC)</option>
-                    </select>
-                  </div>
-                  <div className="fg">
-                    <label className="fl" htmlFor="fcomp">
-                      Component
-                    </label>
-                    <select className="fsel" id="fcomp" defaultValue="">
-                      <option value="">&mdash; Select &mdash;</option>
-                      <option>zcashd</option>
-                      <option>librustzcash</option>
-                      <option>Orchard Protocol</option>
-                      <option>Sapling Protocol</option>
-                      <option>Halo 2</option>
-                      <option>Zebra</option>
-                      <option>Web Infrastructure</option>
-                      <option>Other</option>
-                    </select>
-                  </div>
-                </div>
-
-                <div className="fg">
-                  <label className="fl" htmlFor="fa">
-                    Your Zcash Orchard Z-address (for payout)
-                  </label>
-                  <input
-                    className="fi"
-                    id="fa"
-                    type="text"
-                    placeholder="u1..."
-                    style={{ fontSize: "0.7rem" }}
-                  />
-                </div>
-
-                <div className="fg">
-                  <label className="fl" htmlFor="fd">
-                    Vulnerability Description
-                  </label>
-                  <textarea
-                    className="ft"
-                    id="fd"
-                    placeholder="Describe the vulnerability, steps to reproduce, and potential impact. Include OWASP likelihood/impact estimates if possible. PoC welcome."
-                  />
-                </div>
-
-                <ShimmerButton
-                  className="btn-sub"
-                  type="submit"
-                  style={{ width: "100%" }}
-                >
-                  Submit Encrypted Report &#8599;
-                </ShimmerButton>
-
-                <p className="fnote">
-                  PGP-encrypted in transit &middot; 90-day coordinated
-                  disclosure
-                </p>
-              </form>
-            </div>
+            <SubmitForm />
           </div>
         </section>
       </main>
