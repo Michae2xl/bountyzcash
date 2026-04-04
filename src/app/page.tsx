@@ -321,7 +321,7 @@ export default function Home() {
             </p>
 
             <div className="case-box" style={{ position: "relative" }}>
-              <BorderBeam size={250} duration={14} />
+              <BorderBeam size={16} duration={6} />
 
               <div className="case-header">
                 <div className="case-avatar">AS</div>

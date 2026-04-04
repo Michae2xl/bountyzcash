@@ -181,13 +181,7 @@ export default function HallOfFame() {
               borderColor="rgba(244,183,40,0.22)"
             >
               <div style={{ position: "relative" }}>
-                <BorderBeam
-                  size={250}
-                  duration={14}
-                  colorFrom="#F4B728"
-                  colorTo="#23F4B7"
-                  borderWidth={1.5}
-                />
+                <BorderBeam size={16} duration={6} />
 
                 <div style={{ padding: "2rem 2rem 1.5rem" }}>
                   {/* Rank badge */}
