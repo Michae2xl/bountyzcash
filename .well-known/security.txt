@@ -1,0 +1,7 @@
+Contact: mailto:michaelguima@proton.me
+Contact: https://bountyzcash.org/#submit
+Expires: 2027-04-01T00:00:00.000Z
+Acknowledgments: https://bountyzcash.org/pages/hall-of-fame/
+Preferred-Languages: en, pt
+Canonical: https://bountyzcash.org/.well-known/security.txt
+Policy: https://bountyzcash.org/#rules
