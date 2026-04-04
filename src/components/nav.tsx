@@ -39,8 +39,15 @@ export function Nav() {
   const handleNavClick = useCallback(
     (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
       if (href.startsWith("#")) {
-        e.preventDefault();
-        scrollToHash(href);
+        const isHome =
+          window.location.pathname === "/" || window.location.pathname === "";
+        if (isHome) {
+          e.preventDefault();
+          scrollToHash(href);
+        } else {
+          e.preventDefault();
+          window.location.href = "/" + href;
+        }
         setMenuOpen(false);
       }
     },
