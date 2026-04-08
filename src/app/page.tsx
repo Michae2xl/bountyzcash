@@ -852,6 +852,14 @@ export default function Home() {
             <p className="desc">Security advisories and program updates.</p>
             <div className="news-list">
               <div className="nr">
+                <div className="nd">2026-04-08</div>
+                <div className="nt">
+                  <span className="nbadge">NEW</span>1 ZEC paid to Kenbak for
+                  disclosing missing DMARC/SPF/MX on bountyzcash.org.{" "}
+                  <a href="/hall-of-fame">&rarr; Hall of Fame</a>
+                </div>
+              </div>
+              <div className="nr">
                 <div className="nd">2026-03-31</div>
                 <div className="nt">
                   <span className="nbadge">NEW</span>zcashd v6.12.0 released
