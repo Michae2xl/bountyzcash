@@ -16,9 +16,24 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Zcash Bug Bounty Program — bounty.z.cash",
+  metadataBase: new URL("https://bountyzcash.org"),
+  title: "Zcash Bug Bounty Program — bountyzcash.org",
   description:
-    "Report vulnerabilities in Zcash protocol implementations and earn rewards. Critical bugs up to $50,000.",
+    "Report vulnerabilities in Zcash protocol implementations and earn rewards paid in ZEC.",
+  openGraph: {
+    title: "Zcash Bug Bounty Program — bountyzcash.org",
+    description:
+      "Report vulnerabilities in Zcash protocol implementations and earn rewards paid in ZEC.",
+    url: "https://bountyzcash.org",
+    siteName: "bountyzcash.org",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Zcash Bug Bounty Program — bountyzcash.org",
+    description:
+      "Report vulnerabilities in Zcash protocol implementations and earn rewards paid in ZEC.",
+  },
   icons: {
     icon: [
       {
