@@ -1382,6 +1382,10 @@ table.rt td.rl {
   padding: 6rem 2rem;
   text-align: center;
 }
+.submit-bg {
+  position: relative;
+  z-index: 3;
+}
 .sbox {
   background: var(--bg2);
   border: 1px solid var(--gold-md);
@@ -1390,6 +1394,15 @@ table.rt td.rl {
   position: relative;
   overflow: hidden;
   margin-top: 1.75rem;
+  z-index: 3;
+}
+.sbox::before {
+  pointer-events: none;
+}
+.form,
+.form * {
+  position: relative;
+  z-index: 4;
 }
 .sbox::before {
   content: "";
