@@ -662,7 +662,7 @@ export default function HallOfFame() {
             </div>
 
             <a
-              href="mailto:michaelguima@proton.me"
+              href="mailto:contact@bountyzcash.org"
               style={{
                 display: "inline-flex",
                 alignItems: "center",
@@ -678,7 +678,7 @@ export default function HallOfFame() {
                 transition: "background 0.2s, border-color 0.2s",
               }}
             >
-              Get in touch &rarr; michaelguima@proton.me
+              Get in touch &rarr; contact@bountyzcash.org
             </a>
           </div>
         </section>

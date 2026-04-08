@@ -28,8 +28,8 @@ export function SubmitForm() {
 
     const selectedOrg = ORGS.find((o) => o.name === org);
     const to = selectedOrg
-      ? `${selectedOrg.email},michaelguima@proton.me`
-      : "michaelguima@proton.me";
+      ? `${selectedOrg.email},contact@bountyzcash.org`
+      : "contact@bountyzcash.org";
 
     const subject = `[bountyzcash] ${severity} — ${component}`;
     const body = [
@@ -57,7 +57,7 @@ export function SubmitForm() {
         <p>
           We&rsquo;re still finalizing the scope with Zcash organizations.
           Public submissions will reopen shortly. For urgent disclosures,
-          contact <strong>michaelguima@proton.me</strong> directly.
+          contact <strong>contact@bountyzcash.org</strong> directly.
         </p>
       </div>
       <form
