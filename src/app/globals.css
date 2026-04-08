@@ -1382,10 +1382,6 @@ table.rt td.rl {
   padding: 6rem 2rem;
   text-align: center;
 }
-.submit-bg {
-  position: relative;
-  z-index: 3;
-}
 .sbox {
   background: var(--bg2);
   border: 1px solid var(--gold-md);
@@ -1394,15 +1390,55 @@ table.rt td.rl {
   position: relative;
   overflow: hidden;
   margin-top: 1.75rem;
-  z-index: 3;
 }
-.sbox::before {
-  pointer-events: none;
-}
-.form,
-.form * {
+.beta-lock {
   position: relative;
-  z-index: 4;
+}
+.beta-lock .form {
+  pointer-events: none;
+  user-select: none;
+  opacity: 0.35;
+  filter: blur(1.5px);
+}
+.beta-banner {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  background: rgba(0, 0, 0, 0.72);
+  backdrop-filter: blur(4px);
+  z-index: 10;
+  text-align: center;
+  padding: 2rem;
+  border-radius: 6px;
+}
+.beta-banner .tag {
+  background: rgba(244, 183, 40, 0.15);
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  padding: 0.35rem 0.9rem;
+  border-radius: 999px;
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+.beta-banner h3 {
+  font-family: var(--sans);
+  font-size: 1.4rem;
+  color: var(--t1);
+  margin: 0;
+}
+.beta-banner p {
+  font-family: var(--mono);
+  font-size: 0.85rem;
+  color: var(--t2);
+  max-width: 440px;
+  line-height: 1.55;
+  margin: 0;
 }
 .sbox::before {
   content: "";

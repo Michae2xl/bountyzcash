@@ -50,8 +50,23 @@ export function SubmitForm() {
   }
 
   return (
-    <div className="sbox">
-      <form ref={formRef} className="form" onSubmit={handleSubmit} noValidate>
+    <div className="sbox beta-lock">
+      <div className="beta-banner" role="status" aria-live="polite">
+        <span className="tag">Beta &middot; Submissions Paused</span>
+        <h3>Program is in private beta</h3>
+        <p>
+          We&rsquo;re still finalizing the scope with Zcash organizations.
+          Public submissions will reopen shortly. For urgent disclosures,
+          contact <strong>michaelguima@proton.me</strong> directly.
+        </p>
+      </div>
+      <form
+        ref={formRef}
+        className="form"
+        onSubmit={handleSubmit}
+        noValidate
+        aria-hidden="true"
+      >
         <div className="r2">
           <div className="fg">
             <label className="fl" htmlFor="fn">
