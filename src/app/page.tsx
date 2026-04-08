@@ -168,32 +168,6 @@ const RULES: readonly Rule[] = [
   },
 ] as const;
 
-interface ScopeItem {
-  readonly text: string;
-}
-
-const IN_SCOPE: readonly ScopeItem[] = [
-  { text: "zcashd v6.12.0+ \u2014 core node" },
-  { text: "librustzcash \u2014 Rust cryptographic libraries" },
-  { text: "Orchard shielded protocol & circuit" },
-  { text: "Sapling shielded protocol" },
-  { text: "Halo 2 proving system" },
-  { text: "Zebra \u2014 Zcash Foundation full node" },
-  { text: "bountyzcash.org, z.cash, zodl.com" },
-  { text: "Zcash protocol specification" },
-] as const;
-
-const OUT_OF_SCOPE: readonly ScopeItem[] = [
-  { text: "Third-party wallets (ZecWallet, Nighthawk)" },
-  { text: "Exchanges listing ZEC" },
-  { text: "Social engineering / phishing attacks" },
-  { text: "Physical attacks on infrastructure" },
-  { text: "Previously known and reported issues" },
-  { text: "Sprout pool (deprecated, closed to deposits)" },
-  { text: "DoS / spam without security impact" },
-  { text: "Self-XSS without meaningful attack surface" },
-] as const;
-
 export default function Home() {
   return (
     <>
@@ -919,69 +893,6 @@ export default function Home() {
                   <div className="rb">{rule.body}</div>
                 </SpotlightCard>
               ))}
-            </div>
-          </div>
-        </section>
-
-        {/* ═══ SCOPE ═══ */}
-        <section className="scope-bg" id="scope">
-          <div className="w">
-            <div className="tag">Target Surface</div>
-            <h2>
-              <HyperText text="Scope" />
-            </h2>
-            <p className="desc">
-              Only vulnerabilities in the systems listed below are eligible for
-              rewards.
-            </p>
-
-            <div className="scope-cols">
-              <div>
-                <div className="sh in">
-                  <svg width="13" height="13" viewBox="0 0 13 13" fill="none">
-                    <circle cx="6.5" cy="6.5" r="6" stroke="#23F4B7" />
-                    <path
-                      d="M3.5 6.5l2 2 4-4"
-                      stroke="#23F4B7"
-                      strokeWidth="1.4"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                  In Scope
-                </div>
-                <ul className="sul">
-                  {IN_SCOPE.map((item) => (
-                    <li key={item.text} className="sli">
-                      <span className="si y">+</span>
-                      {item.text}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              <div>
-                <div className="sh out">
-                  <svg width="13" height="13" viewBox="0 0 13 13" fill="none">
-                    <circle cx="6.5" cy="6.5" r="6" stroke="#f87171" />
-                    <path
-                      d="M4 4l5 5M9 4l-5 5"
-                      stroke="#f87171"
-                      strokeWidth="1.4"
-                      strokeLinecap="round"
-                    />
-                  </svg>
-                  Out of Scope
-                </div>
-                <ul className="sul">
-                  {OUT_OF_SCOPE.map((item) => (
-                    <li key={item.text} className="sli">
-                      <span className="si n">&ndash;</span>
-                      {item.text}
-                    </li>
-                  ))}
-                </ul>
-              </div>
             </div>
           </div>
         </section>
