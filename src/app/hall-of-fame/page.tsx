@@ -119,9 +119,9 @@ export default function HallOfFame() {
               marginBottom: "2.5rem",
             }}
           >
-            <span className="hst hst-g">1 Researcher</span>
-            <span className="hst hst-r">1 Critical CVE</span>
-            <span className="hst hst-y">200 ZEC Awarded</span>
+            <span className="hst hst-g">2 Researchers</span>
+            <span className="hst hst-r">2 Vulns Disclosed</span>
+            <span className="hst hst-y">201 ZEC Awarded</span>
             <span className="hst hst-g">72h Patch Window</span>
           </div>
 
@@ -485,7 +485,200 @@ export default function HallOfFame() {
               </div>
             </SpotlightCard>
 
-            {/* Next Slot #002 */}
+            {/* Researcher #002 */}
+            <div style={{ marginTop: "2rem" }} />
+            <SpotlightCard
+              className="researcher-card"
+              spotlightColor="rgba(35,244,183,0.12)"
+              borderColor="rgba(35,244,183,0.22)"
+            >
+              <div style={{ position: "relative" }}>
+                <BorderBeam size={16} duration={6} colorFrom="#23F4B7" />
+
+                <div style={{ padding: "2rem 2rem 1.5rem" }}>
+                  <span
+                    style={{
+                      position: "absolute",
+                      top: "1.25rem",
+                      right: "1.5rem",
+                      fontFamily: "var(--font-geist-mono, monospace)",
+                      fontSize: "0.75rem",
+                      letterSpacing: "0.1em",
+                      color: "rgba(35,244,183,0.5)",
+                      fontWeight: 700,
+                    }}
+                  >
+                    #002
+                  </span>
+
+                  <div
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "1rem",
+                      marginBottom: "0.75rem",
+                    }}
+                  >
+                    <div
+                      className="avatar-ring"
+                      style={{ position: "relative" }}
+                    >
+                      <div
+                        style={{
+                          width: "64px",
+                          height: "64px",
+                          borderRadius: "50%",
+                          border: "2px solid #23F4B7",
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          background: "rgba(35,244,183,0.08)",
+                          fontFamily: "var(--font-geist-mono, monospace)",
+                          fontWeight: 700,
+                          fontSize: "1.2rem",
+                          color: "#23F4B7",
+                          position: "relative",
+                          zIndex: 1,
+                        }}
+                      >
+                        KB
+                      </div>
+                    </div>
+
+                    <div>
+                      <h3
+                        style={{
+                          fontSize: "1.35rem",
+                          fontWeight: 700,
+                          color: "#fff",
+                          margin: 0,
+                          lineHeight: 1.3,
+                        }}
+                      >
+                        <HyperText text="Kenbak" duration={1000} />
+                      </h3>
+                      <p
+                        style={{
+                          fontSize: "0.78rem",
+                          color: "rgba(255,255,255,0.4)",
+                          margin: "0.2rem 0 0",
+                          fontFamily: "var(--font-geist-mono, monospace)",
+                        }}
+                      >
+                        Atmosphere Labs &middot; Reported Apr 2026
+                      </p>
+                    </div>
+                  </div>
+
+                  <div
+                    style={{
+                      display: "flex",
+                      alignItems: "flex-start",
+                      justifyContent: "space-between",
+                      flexWrap: "wrap",
+                      gap: "1rem",
+                      marginTop: "1rem",
+                    }}
+                  >
+                    <div
+                      style={{
+                        display: "flex",
+                        flexWrap: "wrap",
+                        gap: "0.4rem",
+                      }}
+                    >
+                      <span className="chip chip-g">Low</span>
+                      <span className="chip chip-g">AI-Assisted</span>
+                      <span className="chip chip-y">Web Infrastructure</span>
+                    </div>
+
+                    <div style={{ textAlign: "right", flexShrink: 0 }}>
+                      <span
+                        style={{
+                          display: "block",
+                          fontFamily: "var(--font-geist-mono, monospace)",
+                          fontSize: "0.6rem",
+                          textTransform: "uppercase",
+                          letterSpacing: "0.15em",
+                          color: "rgba(255,255,255,0.35)",
+                          marginBottom: "0.15rem",
+                        }}
+                      >
+                        Total Reward
+                      </span>
+                      <div
+                        style={{
+                          display: "flex",
+                          alignItems: "baseline",
+                          gap: "0.35rem",
+                          justifyContent: "flex-end",
+                        }}
+                      >
+                        <SplitFlapDisplay
+                          value="1"
+                          size="lg"
+                          accentColor="#23F4B7"
+                        />
+                        <span
+                          style={{
+                            fontFamily: "var(--font-geist-mono, monospace)",
+                            fontSize: "0.85rem",
+                            fontWeight: 700,
+                            color: "#23F4B7",
+                            letterSpacing: "0.05em",
+                          }}
+                        >
+                          ZEC
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div
+                    style={{
+                      borderTop: "1px solid rgba(255,255,255,0.06)",
+                      marginTop: "1.5rem",
+                      paddingTop: "1.25rem",
+                    }}
+                  >
+                    <p
+                      style={{
+                        fontSize: "0.92rem",
+                        lineHeight: 1.75,
+                        color: "rgba(255,255,255,0.6)",
+                        margin: 0,
+                      }}
+                    >
+                      Identified missing email authentication records (DMARC,
+                      SPF, MX) on{" "}
+                      <code style={{ color: "#23F4B7", fontSize: "0.85em" }}>
+                        bountyzcash.org
+                      </code>
+                      . Without these records, an attacker could spoof emails
+                      from addresses such as{" "}
+                      <code style={{ color: "#23F4B7", fontSize: "0.85em" }}>
+                        triage@bountyzcash.org
+                      </code>
+                      , particularly risky during the 90-day disclosure embargo
+                      when researchers hold undisclosed vulnerabilities. Also
+                      flagged parked nameservers (dns-parking.com) as a domain
+                      hijack vector. Remediated with{" "}
+                      <code style={{ color: "#23F4B7", fontSize: "0.85em" }}>
+                        v=spf1 -all
+                      </code>{" "}
+                      and{" "}
+                      <code style={{ color: "#23F4B7", fontSize: "0.85em" }}>
+                        p=reject
+                      </code>{" "}
+                      DMARC policy. Bounty paid directly by Michae2xl (site
+                      owner).
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </SpotlightCard>
+
+            {/* Next Slot #003 */}
             <div
               style={{
                 marginTop: "2rem",
@@ -514,7 +707,7 @@ export default function HallOfFame() {
                   fontWeight: 700,
                 }}
               >
-                002
+                003
               </div>
               <div>
                 <p
