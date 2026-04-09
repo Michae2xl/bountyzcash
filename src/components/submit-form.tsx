@@ -74,9 +74,10 @@ export function SubmitForm() {
           <select className="fsel" id="fsev" name="severity" defaultValue="">
             <option value="">&mdash; Select &mdash;</option>
             <option>Critical (up to $30,000 in ZEC)</option>
-            <option>High (up to $10,000 in ZEC)</option>
-            <option>Medium (up to $2,000 in ZEC)</option>
-            <option>Low (up to $300 in ZEC)</option>
+            <option>High (up to $15,000 in ZEC)</option>
+            <option>Medium (up to $5,000 in ZEC)</option>
+            <option>Low (up to $1,500 in ZEC)</option>
+            <option>Note (up to $500 in ZEC)</option>
           </select>
         </div>
 

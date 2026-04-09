@@ -107,7 +107,7 @@ const TIERS: readonly Tier[] = [
     badge: "High",
     badgeClass: "bh",
     amount: "up to ",
-    amountEm: "$10,000 in ZEC",
+    amountEm: "$15,000 in ZEC",
     desc: "Significant privacy or security vulnerability with broad impact. Orchard/Sapling protocol issues or wallet key exposure under exploitable conditions.",
     pills: ["Likelihood 5\u20137", "Impact 5\u20137", "OWASP HIGH"],
   },
@@ -115,7 +115,7 @@ const TIERS: readonly Tier[] = [
     badge: "Medium",
     badgeClass: "bm",
     amount: "up to ",
-    amountEm: "$2,000 in ZEC",
+    amountEm: "$5,000 in ZEC",
     desc: "Limited privacy impact, DoS, or transaction malleability that doesn\u2019t break consensus. Partial anonymity set reduction.",
     pills: ["Likelihood 3\u20135", "Impact 3\u20135", "OWASP MEDIUM"],
   },
@@ -123,9 +123,17 @@ const TIERS: readonly Tier[] = [
     badge: "Low",
     badgeClass: "bl",
     amount: "up to ",
-    amountEm: "$300 in ZEC",
+    amountEm: "$1,500 in ZEC",
     desc: "Minor issues with negligible security impact. Best-practice violations or informational disclosures with very limited attack surface.",
     pills: ["Likelihood 1\u20133", "Impact 1\u20133", "OWASP LOW"],
+  },
+  {
+    badge: "Note",
+    badgeClass: "bn",
+    amount: "up to ",
+    amountEm: "$500 in ZEC",
+    desc: "Informational findings, best-practice suggestions, or hardening recommendations with no direct security impact.",
+    pills: ["Likelihood 0\u20131", "Impact 0\u20131", "OWASP NOTE"],
   },
 ] as const;
 
@@ -689,19 +697,19 @@ export default function Home() {
                 <span className="sev-ll">Legend:</span>
                 <span className="schip s-n">
                   <span className="cdot" />
-                  NOTE &mdash; informational
+                  NOTE &mdash; up to $500
                 </span>
                 <span className="schip s-l">
                   <span className="cdot" />
-                  LOW &mdash; up to $300
+                  LOW &mdash; up to $1.5K
                 </span>
                 <span className="schip s-m">
                   <span className="cdot" />
-                  MEDIUM &mdash; up to $2K
+                  MEDIUM &mdash; up to $5K
                 </span>
                 <span className="schip s-h">
                   <span className="cdot" />
-                  HIGH &mdash; up to $10K
+                  HIGH &mdash; up to $15K
                 </span>
                 <span className="schip s-c">
                   <span className="cdot" />
