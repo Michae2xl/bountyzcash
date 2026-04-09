@@ -3,12 +3,7 @@
 import { useRef } from "react";
 import { ShimmerButton } from "@/components/ui/shimmer-button";
 
-const ORGS = [
-  { name: "Shielded Labs", email: "security@shieldedlabs.com" },
-  { name: "ZODL", email: "security@zodl.com" },
-  { name: "Zcash Foundation", email: "security@zfnd.org" },
-  { name: "Bootstrap", email: "security@bootstrapproject.org" },
-] as const;
+const TRIAGE_EMAIL = "jason@shieldedlabs.net";
 
 export function SubmitForm() {
   const formRef = useRef<HTMLFormElement>(null);
@@ -23,13 +18,7 @@ export function SubmitForm() {
     const email = (data.get("email") as string) || "";
     const severity = (data.get("severity") as string) || "";
     const component = (data.get("component") as string) || "";
-    const org = (data.get("org") as string) || "";
     const desc = (data.get("desc") as string) || "";
-
-    const selectedOrg = ORGS.find((o) => o.name === org);
-    const to = selectedOrg
-      ? `${selectedOrg.email},contact@bountyzcash.org`
-      : "contact@bountyzcash.org";
 
     const subject = `[bountyzcash] ${severity} — ${component}`;
     const body = [
@@ -37,36 +26,30 @@ export function SubmitForm() {
       `Contact: ${email}`,
       `Severity: ${severity}`,
       `Component: ${component}`,
-      `Organization: ${org}`,
       ``,
       `--- Vulnerability Description ---`,
       desc,
       ``,
       `---`,
       `Submitted via bountyzcash.org`,
+      `Triage handled jointly by Zcash Foundation, Shielded Labs and ZODL.`,
     ].join("\n");
 
-    window.location.href = `mailto:${to}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    window.location.href = `mailto:${TRIAGE_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
   }
 
   return (
-    <div className="sbox beta-lock">
-      <div className="beta-banner" role="status" aria-live="polite">
-        <span className="tag">Beta &middot; Submissions Paused</span>
-        <h3>Program is in private beta</h3>
+    <div className="sbox">
+      <div className="triage-note" role="status">
+        <span className="tag">Joint Triage</span>
         <p>
-          We&rsquo;re still finalizing the scope with Zcash organizations.
-          Public submissions will reopen shortly. For urgent disclosures,
-          contact <strong>contact@bountyzcash.org</strong> directly.
+          Reports are sent to <strong>{TRIAGE_EMAIL}</strong> and managed
+          collaboratively by the <strong>Zcash Foundation</strong>,{" "}
+          <strong>Shielded Labs</strong> and <strong>ZODL</strong>. Use a
+          shielded Z-address for any sensitive details.
         </p>
       </div>
-      <form
-        ref={formRef}
-        className="form"
-        onSubmit={handleSubmit}
-        noValidate
-        aria-hidden="true"
-      >
+      <form ref={formRef} className="form" onSubmit={handleSubmit} noValidate>
         <div className="r2">
           <div className="fg">
             <label className="fl" htmlFor="fn">
@@ -132,18 +115,6 @@ export function SubmitForm() {
         </div>
 
         <div className="fg">
-          <label className="fl" htmlFor="forg">
-            Report to Organization
-          </label>
-          <select className="fsel" id="forg" name="org" defaultValue="">
-            <option value="">&mdash; Select &mdash;</option>
-            {ORGS.map((o) => (
-              <option key={o.name}>{o.name}</option>
-            ))}
-          </select>
-        </div>
-
-        <div className="fg">
           <label className="fl" htmlFor="fd">
             Vulnerability Description
           </label>
@@ -164,8 +135,8 @@ export function SubmitForm() {
         </ShimmerButton>
 
         <p className="fnote">
-          Opens your email client &middot; Report sent to selected org +
-          bountyzcash maintainer
+          Opens your email client &middot; Triage by ZF, Shielded Labs &amp;
+          ZODL
         </p>
       </form>
     </div>
