@@ -98,32 +98,32 @@ const TIERS: readonly Tier[] = [
   {
     badge: "Critical",
     badgeClass: "bc",
-    amount: "100 \u2013 ",
-    amountEm: "200 ZEC",
+    amount: "up to ",
+    amountEm: "$30,000 in ZEC",
     desc: "RCE, consensus failure, catastrophic privacy breach, shielded pool drain, or ZKP forgery. Full-chain threat with maximum impact and high exploitability.",
     pills: ["Likelihood 7\u20139", "Impact 7\u20139", "OWASP CRITICAL"],
   },
   {
     badge: "High",
     badgeClass: "bh",
-    amount: "20 \u2013 ",
-    amountEm: "100 ZEC",
+    amount: "up to ",
+    amountEm: "$10,000 in ZEC",
     desc: "Significant privacy or security vulnerability with broad impact. Orchard/Sapling protocol issues or wallet key exposure under exploitable conditions.",
     pills: ["Likelihood 5\u20137", "Impact 5\u20137", "OWASP HIGH"],
   },
   {
     badge: "Medium",
     badgeClass: "bm",
-    amount: "2 \u2013 ",
-    amountEm: "20 ZEC",
+    amount: "up to ",
+    amountEm: "$2,000 in ZEC",
     desc: "Limited privacy impact, DoS, or transaction malleability that doesn\u2019t break consensus. Partial anonymity set reduction.",
     pills: ["Likelihood 3\u20135", "Impact 3\u20135", "OWASP MEDIUM"],
   },
   {
     badge: "Low",
     badgeClass: "bl",
-    amount: "0 \u2013 ",
-    amountEm: "2 ZEC",
+    amount: "up to ",
+    amountEm: "$300 in ZEC",
     desc: "Minor issues with negligible security impact. Best-practice violations or informational disclosures with very limited attack surface.",
     pills: ["Likelihood 1\u20133", "Impact 1\u20133", "OWASP LOW"],
   },
@@ -230,8 +230,8 @@ export default function Home() {
 
           <div className="rewards">
             <div className="rc">
-              <span className="rl">Max Paid to Date</span>
-              <SplitFlapDisplay value="200 ZEC" size="sm" />
+              <span className="rl">Max Reward</span>
+              <SplitFlapDisplay value="$30K USD" size="sm" />
             </div>
             <div className="rc">
               <span className="rl">Response SLA</span>
@@ -405,7 +405,7 @@ export default function Home() {
               <div className="case-reward">
                 <div>
                   <div className="cr-label">Total Reward</div>
-                  <div className="cr-amount">200 ZEC</div>
+                  <div className="cr-amount">$30K USD</div>
                   <div
                     style={{
                       fontFamily: "var(--mono)",
@@ -414,7 +414,7 @@ export default function Home() {
                       marginTop: "0.25rem",
                     }}
                   >
-                    50 ZEC each
+                    $7.5K each org
                   </div>
                 </div>
                 <div className="cr-div" />
@@ -497,10 +497,12 @@ export default function Home() {
             </h2>
             <p className="desc">
               All rewards paid in ZEC to a shielded Orchard address. Amounts
-              scored using the OWASP Risk Rating Methodology. Highest reward
-              paid to date:{" "}
-              <strong style={{ color: "var(--gold)" }}>200 ZEC</strong> &mdash;
-              50 ZEC contributed by each of 4 participating organizations.
+              scored using the OWASP Risk Rating Methodology. Maximum reward:{" "}
+              <strong style={{ color: "var(--gold)" }}>
+                $30,000 USD in ZEC
+              </strong>{" "}
+              for critical findings, contributed jointly by 4 participating
+              organizations.
             </p>
 
             <div className="tiers">
@@ -691,19 +693,19 @@ export default function Home() {
                 </span>
                 <span className="schip s-l">
                   <span className="cdot" />
-                  LOW &mdash; 0&ndash;2 ZEC
+                  LOW &mdash; up to $300
                 </span>
                 <span className="schip s-m">
                   <span className="cdot" />
-                  MEDIUM &mdash; 2&ndash;20 ZEC
+                  MEDIUM &mdash; up to $2K
                 </span>
                 <span className="schip s-h">
                   <span className="cdot" />
-                  HIGH &mdash; 20&ndash;100 ZEC
+                  HIGH &mdash; up to $10K
                 </span>
                 <span className="schip s-c">
                   <span className="cdot" />
-                  CRITICAL &mdash; 100&ndash;200 ZEC
+                  CRITICAL &mdash; up to $30K
                 </span>
               </div>
 
@@ -731,7 +733,7 @@ export default function Home() {
                   <span style={{ color: "var(--t3)" }}>&rarr;</span>
                   <span className="schip s-c">
                     <span className="cdot" />
-                    CRITICAL &middot; 200 ZEC (50 &times; 4 orgs)
+                    CRITICAL &middot; up to $30K USD in ZEC
                   </span>
                 </div>
               </div>

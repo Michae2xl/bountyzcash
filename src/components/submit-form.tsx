@@ -38,15 +38,6 @@ export function SubmitForm() {
 
   return (
     <div className="sbox">
-      <div className="triage-note" role="status">
-        <span className="tag">Joint Triage</span>
-        <p>
-          Reports are sent to <strong>{TRIAGE_EMAIL}</strong> and managed
-          collaboratively by the <strong>Zcash Foundation</strong>,{" "}
-          <strong>Shielded Labs</strong> and <strong>ZODL</strong>. Use a
-          shielded Z-address for any sensitive details.
-        </p>
-      </div>
       <form ref={formRef} className="form" onSubmit={handleSubmit} noValidate>
         <div className="r2">
           <div className="fg">
@@ -82,10 +73,10 @@ export function SubmitForm() {
           </label>
           <select className="fsel" id="fsev" name="severity" defaultValue="">
             <option value="">&mdash; Select &mdash;</option>
-            <option>Critical (100&ndash;200 ZEC)</option>
-            <option>High (20&ndash;100 ZEC)</option>
-            <option>Medium (2&ndash;20 ZEC)</option>
-            <option>Low (0&ndash;2 ZEC)</option>
+            <option>Critical (up to $30,000 in ZEC)</option>
+            <option>High (up to $10,000 in ZEC)</option>
+            <option>Medium (up to $2,000 in ZEC)</option>
+            <option>Low (up to $300 in ZEC)</option>
           </select>
         </div>
 
