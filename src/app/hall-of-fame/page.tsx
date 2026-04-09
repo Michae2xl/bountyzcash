@@ -855,7 +855,7 @@ export default function HallOfFame() {
             </div>
 
             <a
-              href="mailto:contact@bountyzcash.org"
+              href="mailto:jason@shieldedlabs.net"
               style={{
                 display: "inline-flex",
                 alignItems: "center",
@@ -871,7 +871,7 @@ export default function HallOfFame() {
                 transition: "background 0.2s, border-color 0.2s",
               }}
             >
-              Get in touch &rarr; contact@bountyzcash.org
+              Get in touch &rarr; jason@shieldedlabs.net
             </a>
           </div>
         </section>
