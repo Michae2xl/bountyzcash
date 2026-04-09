@@ -17,15 +17,13 @@ export function SubmitForm() {
     const name = (data.get("name") as string) || "anon";
     const email = (data.get("email") as string) || "";
     const severity = (data.get("severity") as string) || "";
-    const component = (data.get("component") as string) || "";
     const desc = (data.get("desc") as string) || "";
 
-    const subject = `[bountyzcash] ${severity} — ${component}`;
+    const subject = `[bountyzcash] ${severity}`;
     const body = [
       `Reporter: ${name}`,
       `Contact: ${email}`,
       `Severity: ${severity}`,
-      `Component: ${component}`,
       ``,
       `--- Vulnerability Description ---`,
       desc,
@@ -78,40 +76,17 @@ export function SubmitForm() {
           </div>
         </div>
 
-        <div className="r2">
-          <div className="fg">
-            <label className="fl" htmlFor="fsev">
-              Severity (OWASP)
-            </label>
-            <select className="fsel" id="fsev" name="severity" defaultValue="">
-              <option value="">&mdash; Select &mdash;</option>
-              <option>Critical (100&ndash;200 ZEC)</option>
-              <option>High (20&ndash;100 ZEC)</option>
-              <option>Medium (2&ndash;20 ZEC)</option>
-              <option>Low (0&ndash;2 ZEC)</option>
-            </select>
-          </div>
-          <div className="fg">
-            <label className="fl" htmlFor="fcomp">
-              Component
-            </label>
-            <select
-              className="fsel"
-              id="fcomp"
-              name="component"
-              defaultValue=""
-            >
-              <option value="">&mdash; Select &mdash;</option>
-              <option>zcashd</option>
-              <option>librustzcash</option>
-              <option>Orchard Protocol</option>
-              <option>Sapling Protocol</option>
-              <option>Halo 2</option>
-              <option>Zebra</option>
-              <option>Web Infrastructure</option>
-              <option>Other</option>
-            </select>
-          </div>
+        <div className="fg">
+          <label className="fl" htmlFor="fsev">
+            Severity (OWASP)
+          </label>
+          <select className="fsel" id="fsev" name="severity" defaultValue="">
+            <option value="">&mdash; Select &mdash;</option>
+            <option>Critical (100&ndash;200 ZEC)</option>
+            <option>High (20&ndash;100 ZEC)</option>
+            <option>Medium (2&ndash;20 ZEC)</option>
+            <option>Low (0&ndash;2 ZEC)</option>
+          </select>
         </div>
 
         <div className="fg">
