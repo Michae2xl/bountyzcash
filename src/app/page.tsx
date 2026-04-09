@@ -181,6 +181,19 @@ export default function Home() {
         <section className="hero" id="home">
           <div className="g1" />
           <div className="g2" />
+          <div className="hero-rain" aria-hidden="true">
+            {Array.from({ length: 8 }).map((_, i) => (
+              <svg
+                key={i}
+                className={`hcoin hcoin-${i}`}
+                viewBox="0 0 1080 1080"
+                xmlns="http://www.w3.org/2000/svg"
+                focusable="false"
+              >
+                <path d={ZCASH_SVG_PATH} fill="#F4B728" fillRule="evenodd" />
+              </svg>
+            ))}
+          </div>
           <svg
             className="hero-ghost"
             viewBox="0 0 1080 1080"
