@@ -855,8 +855,7 @@ export default function Home() {
                 <div className="dc-title">Reporter Privacy Protected</div>
                 <div className="dc-body">
                   Researcher identity is never disclosed without explicit
-                  consent. Reports are PGP-encrypted at submission. We never
-                  share vulnerability details with third parties prior to the
+                  consent. We do not publish vulnerability details prior to the
                   agreed disclosure date, regardless of external pressure.
                 </div>
               </SpotlightCard>
@@ -937,8 +936,8 @@ export default function Home() {
             </div>
             <h2>Submit a Vulnerability</h2>
             <p className="desc" style={{ margin: "0 auto" }}>
-              Encrypted and confidential. Reviewed by the triage panel within 5
-              business days. AI-assisted discovery explicitly welcome.
+              Reviewed within 5 business days. AI-assisted discovery explicitly
+              welcome.
             </p>
 
             <SubmitForm />
