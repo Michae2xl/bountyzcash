@@ -4,6 +4,8 @@ import { useRef } from "react";
 import { ShimmerButton } from "@/components/ui/shimmer-button";
 
 const TRIAGE_EMAIL = "jason@shieldedlabs.net";
+const ZF_ZEBRA_ADVISORY_URL =
+  "https://github.com/ZcashFoundation/zebra/security/advisories/new";
 
 export function SubmitForm() {
   const formRef = useRef<HTMLFormElement>(null);
@@ -30,7 +32,8 @@ export function SubmitForm() {
       ``,
       `---`,
       `Submitted via bountyzcash.org`,
-      `Triage handled jointly by Zcash Foundation, Shielded Labs and ZODL.`,
+      `Inbox monitored by Shielded Labs and ZODL.`,
+      `Zcash Foundation / Zebra findings should be submitted via private advisory issue.`,
     ].join("\n");
 
     window.location.href = `mailto:${TRIAGE_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
@@ -63,6 +66,23 @@ export function SubmitForm() {
             No payouts are issued for Crosslink bugs.
           </p>
         </div>
+      </div>
+
+      <div className="triage-note">
+        <div className="tag">Zcash Foundation / Zebra</div>
+        <p>
+          If your report is for <strong>Zcash Foundation infrastructure</strong>{" "}
+          or <strong>Zebra</strong>, do not use this form. Please open a{" "}
+          <strong>private security advisory issue</strong> instead.
+        </p>
+        <a
+          className="triage-link"
+          href={ZF_ZEBRA_ADVISORY_URL}
+          target="_blank"
+          rel="noreferrer"
+        >
+          Open private advisory issue &#8599;
+        </a>
       </div>
 
       <form ref={formRef} className="form" onSubmit={handleSubmit} noValidate>
@@ -129,8 +149,8 @@ export function SubmitForm() {
         </ShimmerButton>
 
         <p className="fnote">
-          Opens your email client &middot; Triage by ZF, Shielded Labs &amp;
-          ZODL
+          Opens your email client &middot; Shielded Labs / ZODL intake &middot;
+          ZF / Zebra reports should use the advisory issue flow
         </p>
       </form>
     </div>

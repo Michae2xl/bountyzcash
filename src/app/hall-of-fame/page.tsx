@@ -872,7 +872,7 @@ export default function HallOfFame() {
                 transition: "background 0.2s, border-color 0.2s",
               }}
             >
-              Get in touch &rarr; jason@shieldedlabs.net
+              Get in touch &rarr; Contact the team
             </a>
           </div>
         </section>

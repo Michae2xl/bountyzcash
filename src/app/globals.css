@@ -1536,6 +1536,31 @@ table.rt td.rl {
   color: var(--t1);
   font-weight: 600;
 }
+.triage-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  padding: 0.72rem 1rem;
+  border: 1px solid var(--gold-md);
+  border-radius: 999px;
+  background: rgba(244, 183, 40, 0.08);
+  color: var(--gold);
+  font-family: var(--mono);
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition:
+    background 0.17s,
+    border-color 0.17s,
+    color 0.17s;
+}
+.triage-link:hover {
+  background: rgba(244, 183, 40, 0.14);
+  border-color: var(--gold-hi);
+  color: #ffd060;
+}
 .sbox::before {
   content: "";
   position: absolute;
