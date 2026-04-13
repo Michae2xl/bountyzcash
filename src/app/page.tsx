@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { Nav } from "@/components/nav";
 import { Footer } from "@/components/footer";
 import { CanvasBg } from "@/components/canvas-bg";
@@ -879,7 +880,7 @@ export default function Home() {
                 <div className="nt">
                   <span className="nbadge">NEW</span>1 ZEC paid to Kenbak for
                   disclosing missing DMARC/SPF/MX on bountyzcash.org.{" "}
-                  <a href="/hall-of-fame">&rarr; Hall of Fame</a>
+                  <Link href="/hall-of-fame">&rarr; Hall of Fame</Link>
                 </div>
               </div>
               <div className="nr">

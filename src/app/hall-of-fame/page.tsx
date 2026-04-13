@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { Nav } from "@/components/nav";
 import { Footer } from "@/components/footer";
 import { SpotlightCard } from "@/components/ui/spotlight-card";
@@ -730,7 +731,7 @@ export default function HallOfFame() {
                   Submit a valid report to claim this spot
                 </p>
               </div>
-              <a
+              <Link
                 href="/#submit"
                 style={{
                   marginTop: "0.5rem",
@@ -749,7 +750,7 @@ export default function HallOfFame() {
                 }}
               >
                 Submit Report &rarr;
-              </a>
+              </Link>
             </div>
           </div>
         </section>

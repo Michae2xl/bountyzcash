@@ -38,6 +38,33 @@ export function SubmitForm() {
 
   return (
     <div className="sbox">
+      <div
+        className="scope-board"
+        role="note"
+        aria-label="Crosslink scope and payout notice"
+      >
+        <div className="scope-board__head">
+          <div className="scope-board__signal">
+            <span className="scope-board__led" aria-hidden="true" />
+            <span className="scope-board__label">Crosslink Scope Alert</span>
+          </div>
+          <span className="scope-board__badge">No Bounty</span>
+        </div>
+
+        <div className="scope-board__screen">
+          <p className="scope-board__line scope-board__line--strong">
+            Crosslink repositories are out of scope.
+          </p>
+          <p className="scope-board__line">
+            Prototype / testnet only. No Crosslink repository qualifies for bug
+            bounty rewards.
+          </p>
+          <p className="scope-board__line scope-board__line--muted">
+            No payouts are issued for Crosslink bugs.
+          </p>
+        </div>
+      </div>
+
       <form ref={formRef} className="form" onSubmit={handleSubmit} noValidate>
         <div className="r2">
           <div className="fg">

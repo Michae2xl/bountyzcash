@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useState, useCallback } from "react";
 
 const ZCASH_SVG_PATH =
@@ -57,7 +58,7 @@ export function Nav() {
     <>
       <header id="nav">
         <div className="nav-w">
-          <a href="/" className="brand" aria-label="bountyzcash.org">
+          <Link href="/" className="brand" aria-label="bountyzcash.org">
             <svg
               width="30"
               height="30"
@@ -74,20 +75,32 @@ export function Nav() {
               <span className="d">.</span>
               <span className="g">org</span>
             </div>
-          </a>
+          </Link>
 
           <nav className="nav-links" aria-label="Primary">
-            {NAV_LINKS.map((link) => (
-              <a
-                key={link.label}
-                href={link.href}
-                className="nl"
-                style={link.highlight ? { color: "var(--gold)" } : undefined}
-                onClick={(e) => handleNavClick(e, link.href)}
-              >
-                {link.label}
-              </a>
-            ))}
+            {NAV_LINKS.map((link) =>
+              link.href.startsWith("/") ? (
+                <Link
+                  key={link.label}
+                  href={link.href}
+                  className="nl"
+                  style={link.highlight ? { color: "var(--gold)" } : undefined}
+                  onClick={() => setMenuOpen(false)}
+                >
+                  {link.label}
+                </Link>
+              ) : (
+                <a
+                  key={link.label}
+                  href={link.href}
+                  className="nl"
+                  style={link.highlight ? { color: "var(--gold)" } : undefined}
+                  onClick={(e) => handleNavClick(e, link.href)}
+                >
+                  {link.label}
+                </a>
+              ),
+            )}
           </nav>
 
           <a
@@ -116,16 +129,27 @@ export function Nav() {
         id="mobMenu"
         aria-hidden={!menuOpen}
       >
-        {NAV_LINKS.map((link) => (
-          <a
-            key={link.label}
-            href={link.href}
-            style={link.highlight ? { color: "var(--gold)" } : undefined}
-            onClick={(e) => handleNavClick(e, link.href)}
-          >
-            {link.label}
-          </a>
-        ))}
+        {NAV_LINKS.map((link) =>
+          link.href.startsWith("/") ? (
+            <Link
+              key={link.label}
+              href={link.href}
+              style={link.highlight ? { color: "var(--gold)" } : undefined}
+              onClick={() => setMenuOpen(false)}
+            >
+              {link.label}
+            </Link>
+          ) : (
+            <a
+              key={link.label}
+              href={link.href}
+              style={link.highlight ? { color: "var(--gold)" } : undefined}
+              onClick={(e) => handleNavClick(e, link.href)}
+            >
+              {link.label}
+            </a>
+          ),
+        )}
         <a
           href="#submit"
           className="btn btn-y"
