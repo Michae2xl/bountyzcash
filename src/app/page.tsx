@@ -936,8 +936,9 @@ export default function Home() {
             </div>
             <h2>Submit a Vulnerability</h2>
             <p className="desc" style={{ margin: "0 auto" }}>
-              Reviewed within 5 business days. AI-assisted discovery explicitly
-              welcome.
+              Reports are routed to the official ZCG Security &amp;
+              Vulnerability Disclosure Initiative &mdash; submit through each
+              project&rsquo;s SECURITY.md.
             </p>
 
             <SubmitForm />

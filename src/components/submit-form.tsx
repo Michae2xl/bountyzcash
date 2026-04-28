@@ -1,158 +1,133 @@
-"use client";
-
-import { useRef } from "react";
-import { ShimmerButton } from "@/components/ui/shimmer-button";
-
-const TRIAGE_EMAIL = "jason@shieldedlabs.net";
+const ZCG_INITIATIVE_URL =
+  "https://forum.zcashcommunity.com/t/zcg-security-vulnerability-disclosure-initiative/55545";
 const ZF_ZEBRA_ADVISORY_URL =
   "https://github.com/ZcashFoundation/zebra/security/advisories/new";
 
+interface OfficialRepo {
+  readonly name: string;
+  readonly securityUrl: string;
+}
+
+const OFFICIAL_REPOS: readonly OfficialRepo[] = [
+  {
+    name: "zcashd",
+    securityUrl: "https://github.com/zcash/zcash/security/policy",
+  },
+  {
+    name: "Zebra",
+    securityUrl:
+      "https://github.com/ZcashFoundation/zebra/security/advisories/new",
+  },
+  {
+    name: "librustzcash",
+    securityUrl: "https://github.com/zcash/librustzcash/security/policy",
+  },
+  {
+    name: "Zallet",
+    securityUrl: "https://github.com/zcash/wallet/security/policy",
+  },
+  {
+    name: "Zaino",
+    securityUrl: "https://github.com/zingolabs/zaino/security/policy",
+  },
+  {
+    name: "lightwalletd",
+    securityUrl: "https://github.com/zcash/lightwalletd/security/policy",
+  },
+  {
+    name: "zcash-devtool",
+    securityUrl: "https://github.com/zcash/zcash-devtool/security/policy",
+  },
+];
+
 export function SubmitForm() {
-  const formRef = useRef<HTMLFormElement>(null);
-
-  function handleSubmit(e: React.FormEvent) {
-    e.preventDefault();
-    const form = formRef.current;
-    if (!form) return;
-
-    const data = new FormData(form);
-    const name = (data.get("name") as string) || "anon";
-    const email = (data.get("email") as string) || "";
-    const severity = (data.get("severity") as string) || "";
-    const desc = (data.get("desc") as string) || "";
-
-    const subject = `[bountyzcash] ${severity}`;
-    const body = [
-      `Reporter: ${name}`,
-      `Contact: ${email}`,
-      `Severity: ${severity}`,
-      ``,
-      `--- Vulnerability Description ---`,
-      desc,
-      ``,
-      `---`,
-      `Submitted via bountyzcash.org`,
-      `Inbox monitored by Shielded Labs and ZODL.`,
-      `Zcash Foundation / Zebra findings should be submitted via private advisory issue.`,
-    ].join("\n");
-
-    window.location.href = `mailto:${TRIAGE_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-  }
-
   return (
     <div className="sbox">
       <div
         className="scope-board"
         role="note"
-        aria-label="Crosslink scope and payout notice"
+        aria-label="Official disclosure routing notice"
       >
         <div className="scope-board__head">
           <div className="scope-board__signal">
             <span className="scope-board__led" aria-hidden="true" />
-            <span className="scope-board__label">Crosslink Scope Alert</span>
+            <span className="scope-board__label">Official ZCG Program</span>
           </div>
-          <span className="scope-board__badge">No Bounty</span>
+          <span className="scope-board__badge">No Intake Here</span>
         </div>
 
         <div className="scope-board__screen">
           <p className="scope-board__line scope-board__line--strong">
-            Crosslink repositories are out of scope.
+            bountyzcash.org does not accept reports.
           </p>
           <p className="scope-board__line">
-            Prototype / testnet only. No Crosslink repository qualifies for bug
-            bounty rewards.
+            All vulnerability disclosures must go through the official ZCG
+            Security &amp; Vulnerability Disclosure Initiative.
           </p>
           <p className="scope-board__line scope-board__line--muted">
-            No payouts are issued for Crosslink bugs.
+            No email, no form on this site counts for triage or payout.
           </p>
         </div>
       </div>
 
       <div className="triage-note">
-        <div className="tag">Zcash Foundation / Zebra</div>
+        <div className="tag">How to disclose</div>
         <p>
-          If your report is for <strong>Zcash Foundation infrastructure</strong>{" "}
-          or <strong>Zebra</strong>, do not use this form. Please open a{" "}
-          <strong>private security advisory issue</strong> instead.
+          Submit reports through each project&apos;s own{" "}
+          <strong>SECURITY.md</strong> on GitHub. ZCG does not accept reports
+          directly &mdash; remediation teams triage, and FPF coordinates payout
+          after a fix lands.
         </p>
         <a
           className="triage-link"
-          href={ZF_ZEBRA_ADVISORY_URL}
+          href={ZCG_INITIATIVE_URL}
           target="_blank"
           rel="noreferrer"
         >
-          Open private advisory issue &#8599;
+          Read the ZCG Initiative &#8599;
         </a>
       </div>
 
-      <form ref={formRef} className="form" onSubmit={handleSubmit} noValidate>
-        <div className="r2">
-          <div className="fg">
-            <label className="fl" htmlFor="fn">
-              Name / Handle
-            </label>
-            <input
-              className="fi"
-              id="fn"
-              name="name"
-              type="text"
-              placeholder="anon_hacker"
-              autoComplete="off"
-            />
-          </div>
-          <div className="fg">
-            <label className="fl" htmlFor="fe">
-              Contact Email
-            </label>
-            <input
-              className="fi"
-              id="fe"
-              name="email"
-              type="email"
-              placeholder="you@proton.me"
-            />
-          </div>
-        </div>
+      <ul
+        className="repo-list"
+        aria-label="Official Zcash project disclosure channels"
+      >
+        {OFFICIAL_REPOS.map((repo) => (
+          <li key={repo.name} className="repo-item">
+            <span className="repo-name">{repo.name}</span>
+            <a
+              className="repo-link"
+              href={repo.securityUrl}
+              target="_blank"
+              rel="noreferrer"
+            >
+              SECURITY.md &#8599;
+            </a>
+          </li>
+        ))}
+      </ul>
 
-        <div className="fg">
-          <label className="fl" htmlFor="fsev">
-            Severity (OWASP)
-          </label>
-          <select className="fsel" id="fsev" name="severity" defaultValue="">
-            <option value="">&mdash; Select &mdash;</option>
-            <option>Critical (up to $30,000 in ZEC)</option>
-            <option>High (up to $15,000 in ZEC)</option>
-            <option>Medium (up to $5,000 in ZEC)</option>
-            <option>Low (up to $1,500 in ZEC)</option>
-            <option>Note (up to $500 in ZEC)</option>
-          </select>
-        </div>
+      <a
+        className="btn-sub btn-sub--link"
+        href={ZCG_INITIATIVE_URL}
+        target="_blank"
+        rel="noreferrer"
+      >
+        Open Official ZCG Initiative &#8599;
+      </a>
 
-        <div className="fg">
-          <label className="fl" htmlFor="fd">
-            Vulnerability Description
-          </label>
-          <textarea
-            className="ft"
-            id="fd"
-            name="desc"
-            placeholder="Describe the vulnerability, steps to reproduce, and potential impact. Include OWASP likelihood/impact estimates if possible. PoC welcome."
-          />
-        </div>
-
-        <ShimmerButton
-          className="btn-sub"
-          type="submit"
-          style={{ width: "100%" }}
+      <p className="fnote">
+        Zcash Foundation / Zebra reports go through the{" "}
+        <a
+          href={ZF_ZEBRA_ADVISORY_URL}
+          target="_blank"
+          rel="noreferrer"
+          className="fnote-link"
         >
-          Submit Report &#8599;
-        </ShimmerButton>
-
-        <p className="fnote">
-          Opens your email client &middot; Shielded Labs / ZODL intake &middot;
-          ZF / Zebra reports should use the advisory issue flow
-        </p>
-      </form>
+          private advisory issue flow
+        </a>
+        .
+      </p>
     </div>
   );
 }

@@ -856,7 +856,9 @@ export default function HallOfFame() {
             </div>
 
             <a
-              href="mailto:jason@shieldedlabs.net"
+              href="https://forum.zcashcommunity.com/t/zcg-security-vulnerability-disclosure-initiative/55545"
+              target="_blank"
+              rel="noreferrer"
               style={{
                 display: "inline-flex",
                 alignItems: "center",
@@ -872,7 +874,7 @@ export default function HallOfFame() {
                 transition: "background 0.2s, border-color 0.2s",
               }}
             >
-              Get in touch &rarr; Contact the team
+              Open Official ZCG Initiative &#8599;
             </a>
           </div>
         </section>
