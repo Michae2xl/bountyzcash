@@ -16,7 +16,7 @@ const NAV_LINKS: readonly NavLink[] = [
   { label: "Why", href: "#why" },
   { label: "Case Study", href: "#case-study" },
   { label: "Payouts", href: "#payouts" },
-  { label: "OWASP", href: "#methodology" },
+  { label: "Matrix", href: "#methodology" },
   { label: "Disclosure", href: "#disclosure" },
   { label: "Hall of Fame", href: "/hall-of-fame", highlight: true },
 ] as const;

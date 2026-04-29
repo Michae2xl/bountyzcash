@@ -100,41 +100,142 @@ const TIERS: readonly Tier[] = [
     badge: "Critical",
     badgeClass: "bc",
     amount: "up to ",
-    amountEm: "$30,000 in ZEC",
-    desc: "RCE, consensus failure, catastrophic privacy breach, shielded pool drain, or ZKP forgery. Full-chain threat with maximum impact and high exploitability.",
-    pills: ["Likelihood 7\u20139", "Impact 7\u20139", "OWASP CRITICAL"],
+    amountEm: "$225,000 USD in ZEC",
+    desc: "Core Node only. RCE, consensus failure, catastrophic privacy breach, shielded pool drain, or ZKP forgery. Base $150,000 + bonus up to $75,000.",
+    pills: ["Core Node only", "Base $150,000", "Bonus up to $75,000"],
   },
   {
     badge: "High",
     badgeClass: "bh",
     amount: "up to ",
-    amountEm: "$15,000 in ZEC",
+    amountEm: "$112,500 USD in ZEC",
     desc: "Significant privacy or security vulnerability with broad impact. Orchard/Sapling protocol issues or wallet key exposure under exploitable conditions.",
-    pills: ["Likelihood 5\u20137", "Impact 5\u20137", "OWASP HIGH"],
+    pills: [
+      "All categories",
+      "Base $18,750\u2013$75,000",
+      "Max up to $112,500",
+    ],
   },
   {
     badge: "Medium",
     badgeClass: "bm",
     amount: "up to ",
-    amountEm: "$5,000 in ZEC",
+    amountEm: "$56,250 USD in ZEC",
     desc: "Limited privacy impact, DoS, or transaction malleability that doesn\u2019t break consensus. Partial anonymity set reduction.",
-    pills: ["Likelihood 3\u20135", "Impact 3\u20135", "OWASP MEDIUM"],
+    pills: ["All categories", "Base $9,375\u2013$37,500", "Max up to $56,250"],
   },
   {
     badge: "Low",
     badgeClass: "bl",
     amount: "up to ",
-    amountEm: "$1,500 in ZEC",
+    amountEm: "$28,125 USD in ZEC",
     desc: "Minor issues with negligible security impact. Best-practice violations or informational disclosures with very limited attack surface.",
-    pills: ["Likelihood 1\u20133", "Impact 1\u20133", "OWASP LOW"],
+    pills: ["All categories", "Base $4,687\u2013$18,750", "Max up to $28,125"],
+  },
+] as const;
+
+interface ZcgCategoryGroup {
+  readonly category: string;
+  readonly note?: string;
+  readonly rows: readonly ZcgPayoutRow[];
+}
+
+interface ZcgPayoutRow {
+  readonly severity: "Critical" | "High" | "Medium" | "Low";
+  readonly severityClass: string;
+  readonly base: string;
+  readonly bonus: string;
+  readonly max: string;
+}
+
+const ZCG_PAYOUT_GROUPS: readonly ZcgCategoryGroup[] = [
+  {
+    category: "Core Node",
+    note: "Consensus-critical implementations: zcashd, Zebra, librustzcash.",
+    rows: [
+      {
+        severity: "Critical",
+        severityClass: "cc",
+        base: "$150,000",
+        bonus: "$75,000",
+        max: "$225,000",
+      },
+      {
+        severity: "High",
+        severityClass: "ch",
+        base: "$75,000",
+        bonus: "$37,500",
+        max: "$112,500",
+      },
+      {
+        severity: "Medium",
+        severityClass: "cm",
+        base: "$37,500",
+        bonus: "$18,750",
+        max: "$56,250",
+      },
+      {
+        severity: "Low",
+        severityClass: "cl",
+        base: "$18,750",
+        bonus: "$9,375",
+        max: "$28,125",
+      },
+    ],
   },
   {
-    badge: "Note",
-    badgeClass: "bn",
-    amount: "up to ",
-    amountEm: "$500 in ZEC",
-    desc: "Informational findings, best-practice suggestions, or hardening recommendations with no direct security impact.",
-    pills: ["Likelihood 0\u20131", "Impact 0\u20131", "OWASP NOTE"],
+    category: "Supporting Infrastructure",
+    note: "Wallets, light clients, indexers: Zallet, Zaino, lightwalletd.",
+    rows: [
+      {
+        severity: "High",
+        severityClass: "ch",
+        base: "$37,500",
+        bonus: "$18,750",
+        max: "$56,250",
+      },
+      {
+        severity: "Medium",
+        severityClass: "cm",
+        base: "$18,750",
+        bonus: "$9,375",
+        max: "$28,125",
+      },
+      {
+        severity: "Low",
+        severityClass: "cl",
+        base: "$9,375",
+        bonus: "$4,687",
+        max: "$14,062",
+      },
+    ],
+  },
+  {
+    category: "Developer Tooling",
+    note: "Build, debug, and test tooling: zcash-devtool, ancillary libraries.",
+    rows: [
+      {
+        severity: "High",
+        severityClass: "ch",
+        base: "$18,750",
+        bonus: "$9,375",
+        max: "$28,125",
+      },
+      {
+        severity: "Medium",
+        severityClass: "cm",
+        base: "$9,375",
+        bonus: "$4,687",
+        max: "$14,062",
+      },
+      {
+        severity: "Low",
+        severityClass: "cl",
+        base: "$4,687",
+        bonus: "$2,343",
+        max: "$7,030",
+      },
+    ],
   },
 ] as const;
 
@@ -233,14 +334,14 @@ export default function Home() {
           <p className="hero-sub">
             Find vulnerabilities in Zcash privacy-critical infrastructure.
             <br />
-            OWASP Risk Rating &middot; Coordinated disclosure &middot; Shielded
+            ZCG Payout Matrix &middot; Coordinated disclosure &middot; Shielded
             Z-address required.
           </p>
 
           <div className="rewards">
             <div className="rc">
               <span className="rl">Max Reward</span>
-              <SplitFlapDisplay value="$30K USD" size="sm" />
+              <SplitFlapDisplay value="$225K USD" size="sm" />
             </div>
             <div className="rc">
               <span className="rl">Response SLA</span>
@@ -506,12 +607,12 @@ export default function Home() {
             </h2>
             <p className="desc">
               All rewards paid in ZEC to a shielded Orchard address. Amounts
-              scored using the OWASP Risk Rating Methodology. Maximum reward:{" "}
+              follow the official ZCG Payout Matrix (Core Node, Supporting
+              Infrastructure, Developer Tooling). Maximum reward:{" "}
               <strong style={{ color: "var(--gold)" }}>
-                $30,000 USD in ZEC
+                $225,000 USD in ZEC
               </strong>{" "}
-              for critical findings, contributed jointly by 4 participating
-              organizations.
+              for Core Node Critical findings — see the full matrix below.
             </p>
 
             <div className="tiers">
@@ -541,210 +642,82 @@ export default function Home() {
 
         <hr className="div" />
 
-        {/* ═══ OWASP ═══ */}
+        {/* ═══ ZCG PAYOUT MATRIX ═══ */}
         <section className="owasp-bg" id="methodology">
           <div className="w">
             <div className="tag">Scoring Framework</div>
             <h2>
-              <HyperText text="OWASP Risk Rating Methodology" />
+              <HyperText text="ZCG Payout Matrix" />
             </h2>
             <p className="desc">
-              Every submission is scored on two axes &mdash; Likelihood and
-              Impact &mdash; each from 0 to 9. The product determines severity
-              and reward tier.
+              Official Zcash Community Grants payout schedule. Rewards depend on
+              the project category (Core Node, Supporting Infrastructure,
+              Developer Tooling) and severity. Each tier pays a base amount plus
+              a bonus determined by report quality.
             </p>
 
             <div className="owasp-box">
               <div className="owasp-formula">
-                Risk Score = Likelihood (0&ndash;9) &times; Impact (0&ndash;9)
+                Maximum total = Base payout + Bonus (up to)
               </div>
 
-              <div className="owasp-cols">
-                <div>
-                  <div className="og">
-                    <div className="og-title" style={{ color: "var(--grn)" }}>
-                      Likelihood &mdash; Threat Agent
-                    </div>
-                    <ul className="fl-list">
-                      {[
-                        "Skill Level",
-                        "Motive",
-                        "Opportunity",
-                        "Size of group",
-                      ].map((factor) => (
-                        <li key={factor} className="fl-item">
-                          <span className="fn">{factor}</span>
-                          <span
-                            className="fs-val"
-                            style={{ color: "var(--grn)" }}
-                          >
-                            0&ndash;9
-                          </span>
-                        </li>
-                      ))}
-                    </ul>
+              {ZCG_PAYOUT_GROUPS.map((group) => (
+                <div className="zcg-group" key={group.category}>
+                  <div className="zcg-group__head">
+                    <span className="zcg-group__title">{group.category}</span>
+                    {group.note ? (
+                      <span className="zcg-group__note">{group.note}</span>
+                    ) : null}
                   </div>
-                  <div className="og" style={{ marginTop: "0.75rem" }}>
-                    <div className="og-title" style={{ color: "var(--grn)" }}>
-                      Likelihood &mdash; Vulnerability
-                    </div>
-                    <ul className="fl-list">
-                      {[
-                        "Ease of Discovery",
-                        "Ease of Exploit",
-                        "Awareness",
-                        "Intrusion Detection",
-                      ].map((factor) => (
-                        <li key={factor} className="fl-item">
-                          <span className="fn">{factor}</span>
-                          <span
-                            className="fs-val"
-                            style={{ color: "var(--grn)" }}
-                          >
-                            0&ndash;9
-                          </span>
-                        </li>
-                      ))}
-                    </ul>
+                  <div className="rt-wrap">
+                    <table
+                      className="rt zcg-table"
+                      aria-label={`${group.category} payout matrix`}
+                    >
+                      <thead>
+                        <tr>
+                          <th className="th-l">Severity</th>
+                          <th className="th-i">Base payout</th>
+                          <th className="th-i">Bonus (up to)</th>
+                          <th className="th-i">Maximum total</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {group.rows.map((row) => (
+                          <tr key={`${group.category}-${row.severity}`}>
+                            <td className={`zcg-sev ${row.severityClass}`}>
+                              {row.severity}
+                            </td>
+                            <td className="zcg-num">{row.base}</td>
+                            <td className="zcg-num">{row.bonus}</td>
+                            <td className="zcg-num zcg-max">{row.max}</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
                   </div>
                 </div>
-
-                <div>
-                  <div className="og">
-                    <div className="og-title" style={{ color: "var(--gold)" }}>
-                      Impact &mdash; Technical
-                    </div>
-                    <ul className="fl-list">
-                      {[
-                        "Loss of Confidentiality",
-                        "Loss of Integrity",
-                        "Loss of Availability",
-                        "Loss of Accountability",
-                      ].map((factor) => (
-                        <li key={factor} className="fl-item">
-                          <span className="fn">{factor}</span>
-                          <span className="fs-val">0&ndash;9</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                  <div className="og" style={{ marginTop: "0.75rem" }}>
-                    <div className="og-title" style={{ color: "var(--gold)" }}>
-                      Impact &mdash; Business
-                    </div>
-                    <ul className="fl-list">
-                      {[
-                        "Financial Damage",
-                        "Reputation Damage",
-                        "Non-Compliance",
-                        "Privacy Violation",
-                      ].map((factor) => (
-                        <li key={factor} className="fl-item">
-                          <span className="fn">{factor}</span>
-                          <span className="fs-val">0&ndash;9</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-              </div>
-
-              {/* Severity Matrix */}
-              <div className="rt-wrap">
-                <p className="rt-label">
-                  Severity Matrix &mdash; Likelihood (rows) &times; Impact
-                  (columns)
-                </p>
-                <table className="rt" aria-label="OWASP Risk severity matrix">
-                  <thead>
-                    <tr>
-                      <th className="corner" />
-                      <th className="th-i" colSpan={3}>
-                        &#x2B21; IMPACT
-                      </th>
-                    </tr>
-                    <tr>
-                      <th className="th-l">&#x25C8; LIKELIHOOD</th>
-                      <th className="th-i">LOW (0&ndash;3)</th>
-                      <th className="th-i">MEDIUM (3&ndash;6)</th>
-                      <th className="th-i">HIGH (6&ndash;9)</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td className="rl">HIGH (6&ndash;9)</td>
-                      <td className="cm">MEDIUM</td>
-                      <td className="ch">HIGH</td>
-                      <td className="cc">CRITICAL</td>
-                    </tr>
-                    <tr>
-                      <td className="rl">MEDIUM (3&ndash;6)</td>
-                      <td className="cl">LOW</td>
-                      <td className="cm">MEDIUM</td>
-                      <td className="ch">HIGH</td>
-                    </tr>
-                    <tr>
-                      <td className="rl">LOW (0&ndash;3)</td>
-                      <td className="cn">NOTE</td>
-                      <td className="cl">LOW</td>
-                      <td className="cm">MEDIUM</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
+              ))}
 
               {/* Legend */}
               <div className="sev-legend">
-                <span className="sev-ll">Legend:</span>
-                <span className="schip s-n">
-                  <span className="cdot" />
-                  NOTE &mdash; up to $500
-                </span>
+                <span className="sev-ll">Severity legend:</span>
                 <span className="schip s-l">
                   <span className="cdot" />
-                  LOW &mdash; up to $1.5K
+                  LOW
                 </span>
                 <span className="schip s-m">
                   <span className="cdot" />
-                  MEDIUM &mdash; up to $5K
+                  MEDIUM
                 </span>
                 <span className="schip s-h">
                   <span className="cdot" />
-                  HIGH &mdash; up to $15K
+                  HIGH
                 </span>
                 <span className="schip s-c">
                   <span className="cdot" />
-                  CRITICAL &mdash; up to $30K
+                  CRITICAL
                 </span>
-              </div>
-
-              {/* Real Example */}
-              <div className="owasp-ex">
-                <p className="oe-label">
-                  Real Example &mdash; Scalar&apos;s Sprout Bug (Mar 2026)
-                </p>
-                <div className="oe-row">
-                  <span className="oe-f">
-                    Ease of Exploit: <strong>3</strong>
-                  </span>
-                  <span style={{ color: "var(--t3)" }}>&middot;</span>
-                  <span className="oe-f">
-                    Intrusion Detection: <strong>8</strong>
-                  </span>
-                  <span style={{ color: "var(--t3)" }}>&middot;</span>
-                  <span className="oe-f">
-                    Loss of Integrity: <strong>7</strong>
-                  </span>
-                  <span style={{ color: "var(--t3)" }}>&middot;</span>
-                  <span className="oe-f">
-                    Financial Damage: <strong>7</strong>
-                  </span>
-                  <span style={{ color: "var(--t3)" }}>&rarr;</span>
-                  <span className="schip s-c">
-                    <span className="cdot" />
-                    CRITICAL &middot; up to $30K USD in ZEC
-                  </span>
-                </div>
               </div>
 
               <p
@@ -757,12 +730,12 @@ export default function Home() {
                 }}
               >
                 <a
-                  href="https://owasp.org/www-community/OWASP_Risk_Rating_Methodology"
+                  href="https://forum.zcashcommunity.com/t/zcg-security-vulnerability-disclosure-initiative/55545"
                   target="_blank"
                   rel="noopener"
                   style={{ color: "var(--gold)" }}
                 >
-                  &rarr; owasp.org/www-community/OWASP_Risk_Rating_Methodology
+                  &rarr; ZCG Security &amp; Vulnerability Disclosure Initiative
                 </a>
               </p>
             </div>
@@ -805,7 +778,7 @@ export default function Home() {
                   <div className="dc-tr">
                     <span className="dc-td">Day 5</span>
                     <span className="dc-tx">
-                      Triage complete, OWASP severity assigned
+                      Triage complete, ZCG severity assigned
                     </span>
                   </div>
                   <div className="dc-tr">

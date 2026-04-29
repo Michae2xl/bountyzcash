@@ -12,8 +12,8 @@ const FOOTER_LINKS: readonly FooterLink[] = [
   { label: "ZODL", href: "https://zodl.com", external: true },
   { label: "Foundation", href: "https://zfnd.org", external: true },
   {
-    label: "OWASP",
-    href: "https://owasp.org/www-community/OWASP_Risk_Rating_Methodology",
+    label: "ZCG",
+    href: "https://forum.zcashcommunity.com/t/zcg-security-vulnerability-disclosure-initiative/55545",
     external: true,
   },
   { label: "Rules", href: "#rules" },
@@ -41,7 +41,7 @@ export function Footer() {
           <div className="fc">
             <strong>bountyzcash.org</strong>
             <span>An open Zcash security initiative</span>
-            <span>&copy; 2026 bountyzcash.org &middot; OWASP Risk Rating</span>
+            <span>&copy; 2026 bountyzcash.org &middot; ZCG Payout Matrix</span>
           </div>
         </div>
         <nav className="flinks" aria-label="Footer">

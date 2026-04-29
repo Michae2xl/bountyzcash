@@ -1131,6 +1131,58 @@ table.rt td.rl {
   border-radius: 4px;
   border-left: 2px solid var(--gold);
 }
+.zcg-group {
+  margin-top: 1.6rem;
+}
+.zcg-group:first-of-type {
+  margin-top: 1.4rem;
+}
+.zcg-group__head {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  margin-bottom: 0.55rem;
+  padding: 0 0.1rem;
+}
+.zcg-group__title {
+  font-family: var(--mono);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+.zcg-group__note {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  color: var(--t3);
+  letter-spacing: 0.04em;
+}
+.zcg-table tbody tr td {
+  font-family: var(--mono);
+}
+table.rt td.zcg-sev {
+  text-align: left;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  padding: 0.55rem 1rem;
+  font-size: 0.72rem;
+  white-space: nowrap;
+}
+.zcg-num {
+  font-variant-numeric: tabular-nums;
+  text-align: center;
+  color: var(--t1);
+  font-weight: 600;
+}
+.zcg-max {
+  color: var(--gold);
+  font-weight: 700;
+}
+.zcg-table .th-l {
+  text-align: left !important;
+  padding-left: 1rem !important;
+}
 .oe-label {
   font-family: var(--mono);
   font-size: 0.6rem;
